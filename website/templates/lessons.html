@@ -1,0 +1,105 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<div class="row">
+  <div class="col-10 mx-auto">
+    <h1 align="center">Students</h1>
+    <div class="row mb-2">
+      <div class="col-3">
+        <button
+          type="button"
+          class="btn btn-sm btn-light"
+          data-bs-toggle="modal"
+          data-bs-target="#add-lesson-btn"
+        >
+          +ADD NEW LESSON
+        </button>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="add-lesson-btn"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form method="post">
+            <div class="modal-header">ADD NEW LESSON</div>
+            <div class="modal-body">
+              <div class="row mt-2">
+                <div class="col-12">
+                  <label>LESSON'S NAME:</label>
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-12">
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="name"
+                    placeholder="Insert Lesson Name"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-12">
+                  <label>LESSON'S DESCRIPTION:</label>
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-12">
+                  <textarea
+                    class="form-control"
+                    type="text"
+                    name="description"
+                    placeholder="Insert Description"
+                    required
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button class="btn btn-success">Add Lesson</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div>
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>ID:</th>
+                <th>NAME:</th>
+                <th>DESCRIPTION:</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for less in user.lessons %}
+              <tr>
+                <td>{{ less.id }}</td>
+                <td>{{ less.ls_name }}</td>
+                <td>{{ less.ls_description }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "base.html" %} {% block title %}Add Student{% endblock %} {% block
+content %}
+<div class="row">
+  <div class="col-9 mx-auto">
+    <form method="POST">
+      <div class="row mt-4">
+        <div class="col-12">
+          <label>NAME:</label>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-12">
+          <input
+            class="form-control"
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Insert Name"
+            required
+          />
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-12">
+          <label>SURNAME:</label>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-12">
+          <input
+            class="form-control"
+            type="text"
+            id="surname"
+            name="surname"
+            placeholder="Insert surname"
+            required
+          />
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-12">
+          <label>EXAM:</label>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-12">
+          <input
+            class="form-control"
+            type="number"
+            id="exam"
+            name="exam"
+            placeholder="Insert Exam Points"
+            required
+          />
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-12">
+          <label>DISCIPLINE:</label>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-12">
+          <select class="form-select" id="st_lesson" name="st_lesson" required>
+            <option disabled selected value="">--Select--</option>
+            {% for less in user.lessons %}
+            <option value="{{ less.id }}">{{ less.ls_name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-12">
+          <button class="btn btn-success btn-sm" type="submit">
+            ADD STUDENT
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

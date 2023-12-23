@@ -1,0 +1,138 @@
+{% extends "base.html" %} {% block title %}Add Student{% endblock %} {% block
+content %}
+<div class="row">
+  <div class="col-9 mx-auto">
+    <form method="POST">
+      <div class="row mt-4">
+        <div class="col-12">
+          <label>NAME:</label>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-12">
+          <input
+            class="form-control"
+            type="text"
+            id="name"
+            name="name"
+            value="{{student.first_name}}"
+          />
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-12">
+          <label>SURNAME:</label>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-12">
+          <input
+            class="form-control"
+            type="text"
+            id="surname"
+            name="surname"
+            value="{{student.last_name}}"
+          />
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-12">
+          <label>EXAM:</label>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-12">
+          <input
+            class="form-control"
+            type="number"
+            id="exam"
+            name="exam"
+            value="{{student.exam}}"
+          />
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-12">
+          <label>MARK:</label>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-12">
+          <input
+            class="form-control"
+            type="text"
+            id="mark"
+            name="mark"
+            value="{{student.mark}}"
+            readonly
+          />
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-12">
+          <label>LESSON:</label>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-12">
+          <input class="form-control" type="text" id="mark" name="mark" {% for
+          less in user.lessons %} {% if less.id == student.lesson_id: %}
+          value="{{less.ls_name}}" {% endif %}{% endfor %} readonly />
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-12">
+          <button class="btn btn-success btn-sm">SAVE STUDENT</button>
+          <button
+            type="button"
+            class="btn btn-sm btn-danger ms-2"
+            onClick="deleteStudent({{ student.id }})"
+          >
+            DELETE STUDENT
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-10 mx-auto">
+    <div class="mt-5">
+      <h3 class="text-center">Comment Section:</h3>
+      <form action="/add-note" method="post">
+        <input type="hidden" name="sid" id="sid" value="{{ student.id }}" />
+        <textarea
+          class="form-control"
+          id="comment"
+          name="comment"
+          placeholder="Insert text"
+        ></textarea>
+        <button
+          class="btn btn-sm btn-primary mt-1 mb-2"
+          style="width: 8rem; height: 30px"
+        >
+          ADD COMMENT
+        </button>
+      </form>
+      {% for note in user.notes %} {% if note.student_id == student.id %}
+      <div class="row mt-2">
+        <div class="col-sm-12">
+          <div class="border p-2 mb-3">
+            <button
+              type="button"
+              class="btn-close float-end"
+              aria-label="Close"
+              onClick="deleteNote({{ note.id }})"
+            ></button>
+            <p class="text-muted text-sm mb-1">{{ note.date }}</p>
+            <p class="mb-0"><strong>{{ note.data }}</strong></p>
+          </div>
+        </div>
+      </div>
+
+      {% endif %} {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

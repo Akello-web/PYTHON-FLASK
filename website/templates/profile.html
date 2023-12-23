@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% block title %}Profile{% endblock %} {% block
+content %}
+<div class="row">
+  <div class="col-8 mx-auto">
+    <h3 class="text-center">WELCOME TO PROFILE!</h3>
+    <div class="row mt-4">
+      <div class="col-5">
+        <label>FULL NAME:</label>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-12">
+        <input
+          class="form-control"
+          type="text"
+          name="user_full_name"
+          value="{{ user.first_name }}"
+          readonly
+        />
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-12">
+        <label>EMAIL:</label>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-12">
+        <input
+          class="form-control"
+          type="email"
+          name="user_email"
+          value="{{ user.email }}"
+          readonly
+        />
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
