@@ -2,28 +2,3 @@ flask
 Flask-SQLAlchemy
 flask-login
 requests
-
-
-<div class="row">
-  <div class="col-9 mx-auto">
-    <h1 class="text-center">USD Exchange Rates List:</h1>
-    <table class="table table-striped table-hover">
-      <thead>
-        <tr>
-          <th>NAME</th>
-          <th>VALUE</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for currency in data.conversion_rates %}
-        <tr>
-          <td>{{ currency }}</td>
-          <td>{{ data.conversion_rates[currency] }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-</div>
-
- /v4/sports?apiKey=ed38a83d15df53a277f1892dba5b60b3
